@@ -2,8 +2,11 @@
 
 ;; Copyright (C) 2016  Francisco Miguel Colaço
 
+;; This file is not part of GNU Emacs.
+
 ;; Author: Francisco Miguel Colaço <francisco.colaco@gmail.com>
 ;; Version: 0.1
+;; Maintainer: Francisco Miguel Colaço <francisco.colaco@gmail.com>
 ;; Keywords: internal, wp, files
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -158,6 +161,7 @@ name of the file is returned regardless of it's existence."
     file))
 
 
+;;;###autoload
 (defun locate-user-emacs-config-file (name)
   "Return an absolute per user Emacs-specific configuration file name.
 
@@ -167,6 +171,7 @@ directories of the file."
   (udirs-locate-file user-emacs-config-directory name))
 
 
+;;;###autoload
 (defun locate-user-emacs-data-file (name)
   "Return an absolute per user Emacs-specific data file name.
 
@@ -176,6 +181,7 @@ directories of the file."
   (udirs-locate-file user-emacs-data-directory name))
 
 
+;;;###autoload
 (defun locate-user-emacs-cache-file (name)
   "Return an absolute per user Emacs-specific cache file name.
 
@@ -185,6 +191,7 @@ directories of the file."
   (udirs-locate-file user-emacs-cache-directory name))
 
 
+;;;###autoload
 (defun locate-user-emacs-runtime-file (name)
   "Return an absolute per user Emacs-specific runtime file name.
 
@@ -194,6 +201,7 @@ directories of the file."
   (udirs-locate-file user-emacs-runtime-directory name))
 
 
+;;;###autoload
 (defun locate-user-document-file (name)
   "Return an absolute per user document file name.
 
@@ -307,8 +315,9 @@ Returns NIL if DOMAIN is not found."
 
 
 ;; Find now all the directory names this system use and define the
-;; function `locate-user-file', tailored to the OS.  Do not run it
-;; again if 'locate-user-file' is defined.
+;; function `locate-user-file', tailored to the OS.  Do not run it if
+;; 'locate-user-file' is defined (for it would be runned twice
+;; unecessarily).
 ;;
 (unless (fboundp 'locate-user-file)
   (udirs-find-user-emacs-directories))
